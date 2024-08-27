@@ -507,11 +507,11 @@ footer h1{
 
     header a{
         width: 20%;
-        font-size: 2.5vw;
+        font-size: 2.8vw;
     }
 
     #link-logo{
-        width: 25%;
+        width: 30%;
     }
 
     #meu-botao{
@@ -581,6 +581,7 @@ footer h1{
 
     #txt-proposta{
         border-radius: 10px;
+        width: 90%;
     }
 
     #bloco-1-proposta{
@@ -593,21 +594,21 @@ footer h1{
     }
 
     #bloco-1-proposta h1{
-        font-size: 3.5vw;
+        font-size: 3.8vw;
         color: white;
     }
 
     #bloco-1-proposta h2{
-        font-size: 3vw;
+        font-size: 3.3vw;
     }
 
     #txt-proposta p{
         color: white;
-        font-size: 2.9vw;
+        font-size: 3vw;
     }
 
     #txt-proposta li{
-        font-size: 2.9vw;
+        font-size: 3vw;
     }
 
     #bloco-2-proposta img{

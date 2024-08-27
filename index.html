@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="PT-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guilherme Cardoso</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="bcg">
+        <div class="background-slide"></div>
+        <header>
+            <a href="" id="link-logo"><img src="./Imagens/logo-gui.png" alt="" id="img-logo"></a>
+            <a href="#div-eu"><strong>SOBRE MIM</strong></a>
+            <a href="#propostas"><strong>PROJETOS</strong></a>
+            <a href="#div-footer"><strong>INSTAGRAM</strong></a>
+            <a href="https://wa.me/557193033489" id="link-btn"><button id="meu-botao">FALE CONOSCO</button></a>
+        </header>
+        <div class="container">
+            <div id="bloco-1">
+                <h1>PARA IBICARAÍ VOAR + ALTO!</h1>
+                <p><strong>GUI CARDOSO</strong></p>
+                <img src="./Imagens/5555.png" alt="" id="img-num">
+            </div>
+            <div id="bloco-2">
+                <img src="./Imagens/Foto2.png" alt="" id="img-pessoal">
+            </div>
+        </div>
+        <button class="arrow left-arrow">❮</button>
+        <button class="arrow right-arrow">❯</button>
+    </div>
+    
+    <div class="propostas" id="propostas">
+        <h1>PROJETOS</h1>
+        <div id="bloco">
+            <div id="bloco-1-proposta">
+                <h1>Nome do Projeto</h1>
+                <h2>Objetivo do projeto</h2>
+                <div id="txt-proposta">
+                    <p>A nossa proposta de governo focada na gestão de saúde no âmbito do hospital municipal é instituir a fundação municipal
+                        de saúde entidade como personalidade jurídica de direito público, com autonomia administrativa e financeira, com sede
+                         e foco nessa cidade e que terá por finalidade:
+                    </p>
+                    <div>
+                        <li>
+                            Execultar a política de saúde no âmbito hospitalar municipal, em consonância com as diretrizes da administração e 
+                            congregando as diversas instituições de saúde de Ibicaraí;
+                        </li>
+                        <li>
+                            Manter e estabelecer as linhas de  atuação do "Conselho Municipal de Saúde" e outras institueções a serem incorporadas;
+                        </li>
+                        <li>
+                            Congregar todas as forças de saúde pública, privadas e filantrôpico, visando uma ação conjunta em prol do desenvolvimento
+                             do hospital municipal, e promoções das mais variadas, para obtenção de recursos financeiros;
+                        </li>
+                        <li>
+                            Estabelecer convênios, acordos e termos de cooperação com entidades congêneres para ampliação dos serviços.
+                        </li>
+                    </div>
+                    <p>
+                        É importante ressaltar que os empregos estarão garantidos e a prioridade será pelos funcionários do município. Em linhas 
+                        gerais, esse é o contexto que nos motiva a criar a Fundação: propocionar ao hospital e os municípios uma gestão mais eficiente e
+                        célere no conjunto dos serviços prestados atualmente e na possibilidade de ampliar as ofertas de atendimento no nosso hospital.
+                         Além disso, reduzir custos, aumentar a produtividade, potecializar faturamento, gestão integrada com as outras unidades de saúde,
+                         gestão clínica através da criação dos protocolos de saúde, inovação de tecnologia.
+                    </p>
+                </div>
+            </div>
+            <div id="bloco-2-proposta">
+                <img src="./Imagens/Logo.png" alt="">
+            </div>
+        </div>
+    </div>
+
+    <div id="div-eu">
+        <h1>Quem sou eu?</h1>
+        <div id="bloco-eu">
+            <div id="bloco-1-eu">
+            </div>
+            <div id="bloco-2-eu">
+            </div>
+        </div>
+    </div>
+    <footer id="footer">
+        <h1>INSTAGRAM</h1>
+        <div id="div-footer">
+        </div>
+    </footer>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+    const divBotao = document.getElementById("link-btn");
+    const container = document.querySelector("#bloco-1");
+    const header = document.querySelector("header");
+
+    function moverBotao() {
+        if (window.innerWidth <= 768) {
+            // Move a div do botão para o container se estiver em um dispositivo móvel
+            if (!container.contains(divBotao)) {
+                container.appendChild(divBotao);
+                divBotao.style.display = "block"; // Exibe a div no container
+            }
+        } else {
+            // Retorna a div do botão para o header se a tela for maior
+            if (!header.contains(divBotao)) {
+                header.appendChild(divBotao);
+                divBotao.style.display = "flex"; // Exibe a div no header
+            }
+        }
+    }
+
+    // Executa ao carregar a página
+    moverBotao();
+
+    // Adiciona um listener para a mudança de tamanho da tela
+    window.addEventListener("resize", moverBotao);
+});
+
+
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function (e) {
+    e.preventDefault();
+
+    document.querySelector(this.getAttribute('href')).scrollIntoView({
+      behavior: 'smooth'
+    });
+  });
+});
+    
+const images = [
+    'url(./Imagens/profile_gui.png)',
+    'url(./Imagens/Face.png)'
+];
+
+let currentIndex = 0;
+let bgContainer = document.querySelector('.background-slide');
+
+function slideBackground(direction) {
+    // Calcular o novo índice
+    const newIndex = (currentIndex + direction + images.length) % images.length;
+    const offset = direction === 1 ? '100%' : '-100%';
+
+    // Criar uma nova div para o novo background
+    const newBgDiv = document.createElement('div');
+    newBgDiv.className = 'background-slide';
+    newBgDiv.style.backgroundImage = images[newIndex];
+    newBgDiv.style.transform = `translateX(${offset})`;
+
+    // Adicionar a nova div ao DOM
+    bgContainer.parentElement.appendChild(newBgDiv);
+
+    // Forçar o layout para garantir a transição
+    requestAnimationFrame(() => {
+        newBgDiv.style.transform = 'translateX(0)';
+        bgContainer.style.transform = `translateX(${-offset})`;
+    });
+
+    // Listener para quando a transição acabar
+    newBgDiv.addEventListener('transitionend', () => {
+        // Remover a antiga div e atualizar o bgContainer
+        bgContainer.remove();
+        bgContainer = newBgDiv;
+        currentIndex = newIndex; // Atualizar o índice atual
+    }, { once: true });
+}
+
+// Adicionar eventos para as setas
+document.querySelector('.right-arrow').addEventListener('click', () => slideBackground(1));
+document.querySelector('.left-arrow').addEventListener('click', () => slideBackground(-1));
+
+// Inicializar com a primeira imagem
+bgContainer.style.backgroundImage = images[currentIndex];
+
+
+const elementosAnimados = document.querySelectorAll('.propostas');
+const elementosAnimados1 = document.querySelectorAll('#div-eu');
+const elementosAnimados2 = document.querySelectorAll('#footer');
+
+function animaScroll() {
+  const alturaTrigger = window.innerHeight / 5 * 4;
+
+  elementosAnimados.forEach((elemento) => {
+    const posicaoElemento = elemento.getBoundingClientRect().top;
+
+    if (posicaoElemento < alturaTrigger) {
+      elemento.classList.add('ativo');
+    } else {
+      elemento.classList.remove('ativo');
+    }
+  });
+  elementosAnimados1.forEach((elemento) => {
+    const posicaoElemento = elemento.getBoundingClientRect().top;
+
+    if (posicaoElemento < alturaTrigger) {
+      elemento.classList.add('ativo');
+    } else {
+      elemento.classList.remove('ativo');
+    }
+  });
+  elementosAnimados2.forEach((elemento) => {
+    const posicaoElemento = elemento.getBoundingClientRect().top;
+
+    if (posicaoElemento < alturaTrigger) {
+      elemento.classList.add('ativo');
+    } else {
+      elemento.classList.remove('ativo');
+    }
+  });
+}
+
+window.addEventListener('scroll', animaScroll);
+
+
+    </script>
+</body>
+</html>

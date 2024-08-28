@@ -8,7 +8,7 @@
 @font-face {
     font-family: "Principal";
     src:
-      url("./breul-grotesk-b-light.ttf")
+      url("./Fonte/breul-grotesk-b-light.ttf")
   } 
 
 header{
@@ -184,11 +184,13 @@ button{
     font-size: 1rem;
     font-weight: bold;
     color: white;
+    cursor: pointer;
 }
 
 button:hover{
     background-color: white;
     color: #79359e;
+    transition: 0.6s;
 }
 
 .propostas {
@@ -496,21 +498,23 @@ footer h1{
 
     header{
         width: 100%;
+        
         gap: 2%;
         height: 10vh;
         display: flex;
         flex-direction: row;
         justify-content: center;
         align-items: center;
+        position: fixed;
     }
 
     header a{
         width: 20%;
-        font-size: 2.8vw;
+        font-size: 2.5vw;
     }
 
     #link-logo{
-        width: 30%;
+        width: 25%;
     }
 
     #meu-botao{
@@ -580,7 +584,6 @@ footer h1{
 
     #txt-proposta{
         border-radius: 10px;
-        width: 90%;
     }
 
     #bloco-1-proposta{
@@ -593,12 +596,12 @@ footer h1{
     }
 
     #bloco-1-proposta h1{
-        font-size: 3.8vw;
+        font-size: 3.5vw;
         color: white;
     }
 
     #bloco-1-proposta h2{
-        font-size: 3.3vw;
+        font-size: 3vw;
     }
 
     #txt-proposta p{

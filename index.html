@@ -163,7 +163,7 @@ function slideBackground(direction) {
     newBgDiv.addEventListener('transitionend', () => {
         bgContainer.remove();
         bgContainer = newBgDiv;
-        currentIndex = newIndex;
+        currentIndex = newIndex; // Atualizar o índice atual
     }, { once: true });
 }
 
@@ -173,8 +173,15 @@ document.querySelector('.left-arrow').addEventListener('click', () => slideBackg
 // Inicializar com a imagem correta
 setInitialBackground();
 
-// Atualizar imagens quando a janela for redimensionada
-window.addEventListener('resize', setInitialBackground);
+// Atualizar o índice atual ao redimensionar a janela e ajustar a imagem
+window.addEventListener('resize', () => {
+    const images = getImages();
+    if (currentIndex >= images.length) {
+        currentIndex = 0; // Reiniciar o índice se o array de imagens mudar
+    }
+    bgContainer.style.backgroundImage = images[currentIndex];
+});
+
 
 
 

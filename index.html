@@ -37,32 +37,24 @@
                 <h1>Nome do Projeto</h1>
                 <h2>Objetivo do projeto</h2>
                 <div id="txt-proposta">
-                    <p>A nossa proposta de governo focada na gestão de saúde no âmbito do hospital municipal é instituir a fundação municipal
-                        de saúde entidade como personalidade jurídica de direito público, com autonomia administrativa e financeira, com sede
-                         e foco nessa cidade e que terá por finalidade:
-                    </p>
-                    <div>
-                        <li>
-                            Execultar a política de saúde no âmbito hospitalar municipal, em consonância com as diretrizes da administração e 
-                            congregando as diversas instituições de saúde de Ibicaraí;
-                        </li>
-                        <li>
-                            Manter e estabelecer as linhas de  atuação do "Conselho Municipal de Saúde" e outras institueções a serem incorporadas;
-                        </li>
-                        <li>
-                            Congregar todas as forças de saúde pública, privadas e filantrôpico, visando uma ação conjunta em prol do desenvolvimento
-                             do hospital municipal, e promoções das mais variadas, para obtenção de recursos financeiros;
-                        </li>
-                        <li>
-                            Estabelecer convênios, acordos e termos de cooperação com entidades congêneres para ampliação dos serviços.
-                        </li>
-                    </div>
-                    <p>
-                        É importante ressaltar que os empregos estarão garantidos e a prioridade será pelos funcionários do município. Em linhas 
-                        gerais, esse é o contexto que nos motiva a criar a Fundação: propocionar ao hospital e os municípios uma gestão mais eficiente e
-                        célere no conjunto dos serviços prestados atualmente e na possibilidade de ampliar as ofertas de atendimento no nosso hospital.
-                         Além disso, reduzir custos, aumentar a produtividade, potecializar faturamento, gestão integrada com as outras unidades de saúde,
-                         gestão clínica através da criação dos protocolos de saúde, inovação de tecnologia.
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus at faucibus ex. Sed nec tempor massa. Proin sagittis efficitur 
+                        odio sit amet lobortis. Aliquam nec tincidunt augue. Integer at blandit sapien. Phasellus aliquet faucibus elit. In commodo nisi 
+                        nec felis faucibus laoreet. Pellentesque sit amet venenatis nisl. Proin egestas nunc vel diam sagittis, sagittis viverra tellus convallis.
+                        Nulla eget sodales tortor. In rutrum mi quis dolor tempus, nec condimentum metus dignissim. Duis mattis varius lectus quis mollis. 
+                        Sed ornare, sapien ut laoreet consectetur, sapien ipsum convallis purus, quis semper lacus elit sed diam. Suspendisse in odio facilisis, 
+                        rutrum nibh in, consectetur sem. Cras rutrum nisl eget elementum posuere. Integer eu aliquet nibh.
+                        Integer tempor consequat neque, at dapibus lectus tempor eu. Aliquam bibendum consectetur odio nec congue. Nunc id est commodo, scelerisque 
+                        tellus et, porttitor neque. Vestibulum vel maximus massa, ac cursus mauris. Donec arcu felis, pulvinar nec elit id, aliquet feugiat nunc. 
+                        Nullam magna nulla, porttitor vel nisi sit amet, egestas efficitur dui. Aliquam erat volutpat. Nullam efficitur hendrerit tempor.
+                        Integer eu molestie libero. Cras non ante ac libero accumsan tempor. Quisque eleifend pretium velit, et iaculis nisl dictum ut. In ultrices 
+                        tempus elementum. Donec metus felis, auctor id sapien nec, euismod dictum nisi. Aliquam id felis feugiat, pharetra augue et, hendrerit diam. 
+                        Maecenas nec eros in tortor luctus tincidunt.
+                        Mauris faucibus blandit lacus, in elementum nisi dignissim non. Vivamus semper metus urna, vitae luctus dolor rhoncus sit amet. 
+                        Aliquam erat volutpat. Etiam id lorem congue, sagittis erat quis, lobortis quam. Praesent tempor eros sed porttitor ornare. Quisque 
+                        et congue turpis, sed blandit urna. Fusce imperdiet massa sit amet sapien aliquam, nec vulputate nisl eleifend. Aenean aliquam massa non 
+                        dictum euismod. Aliquam eu tempus quam. Fusce elementum felis ligula, nec congue lectus fringilla id. Pellentesque bibendum ex eu ornare 
+                        posuere. Duis sed mollis velit. Nulla pretium sed erat sed blandit. Cras aliquet tincidunt posuere. Sed neque magna, aliquam sit amet lectus 
+                        ac, rutrum auctor neque.
                     </p>
                 </div>
             </div>
@@ -128,49 +120,62 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   });
 });
     
-const images = [
+const desktopImages = [
     'url(./profile_gui.png)',
-    'url(./Imagens/Face.png)'
+    'url(./profile_gui2.png)'
+];
+
+const mobileImages = [
+    'url(./profile_gui_mobile.png)',
+    'url(./profile_gui_mobile_2.png)'
 ];
 
 let currentIndex = 0;
 let bgContainer = document.querySelector('.background-slide');
 
+// Função para escolher as imagens de acordo com o tamanho da tela
+function getImages() {
+    return window.matchMedia("(max-width: 768px)").matches ? mobileImages : desktopImages;
+}
+
+// Função para definir o background inicial
+function setInitialBackground() {
+    bgContainer.style.backgroundImage = getImages()[currentIndex];
+}
+
 function slideBackground(direction) {
-    // Calcular o novo índice
+    const images = getImages(); // Obter as imagens corretas com base no tamanho da tela
     const newIndex = (currentIndex + direction + images.length) % images.length;
     const offset = direction === 1 ? '100%' : '-100%';
 
-    // Criar uma nova div para o novo background
     const newBgDiv = document.createElement('div');
     newBgDiv.className = 'background-slide';
     newBgDiv.style.backgroundImage = images[newIndex];
     newBgDiv.style.transform = `translateX(${offset})`;
 
-    // Adicionar a nova div ao DOM
     bgContainer.parentElement.appendChild(newBgDiv);
 
-    // Forçar o layout para garantir a transição
     requestAnimationFrame(() => {
         newBgDiv.style.transform = 'translateX(0)';
         bgContainer.style.transform = `translateX(${-offset})`;
     });
 
-    // Listener para quando a transição acabar
     newBgDiv.addEventListener('transitionend', () => {
-        // Remover a antiga div e atualizar o bgContainer
         bgContainer.remove();
         bgContainer = newBgDiv;
-        currentIndex = newIndex; // Atualizar o índice atual
+        currentIndex = newIndex;
     }, { once: true });
 }
 
-// Adicionar eventos para as setas
 document.querySelector('.right-arrow').addEventListener('click', () => slideBackground(1));
 document.querySelector('.left-arrow').addEventListener('click', () => slideBackground(-1));
 
-// Inicializar com a primeira imagem
-bgContainer.style.backgroundImage = images[currentIndex];
+// Inicializar com a imagem correta
+setInitialBackground();
+
+// Atualizar imagens quando a janela for redimensionada
+window.addEventListener('resize', setInitialBackground);
+
 
 
 const elementosAnimados = document.querySelectorAll('.propostas');

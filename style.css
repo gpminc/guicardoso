@@ -8,7 +8,7 @@
 @font-face {
     font-family: "Principal";
     src:
-      url("./breul-grotesk-b-light.ttf")
+      url("./Fonte/breul-grotesk-b-light.ttf")
   } 
 
 header{
@@ -213,7 +213,7 @@ button:hover{
     margin-top: 5%;
     flex-direction: column;
     align-items: center; 
-    background-color: #79359e;
+    background-color: #9C2CD3;
     margin-left: 3%;
     margin-right: 3%;
  
@@ -312,7 +312,7 @@ button:hover{
   }
 
 #div-eu h1{
-    color: #79359e;
+    color: #9C2CD3;
     font-size: 3.5vw;
 }
 
@@ -484,8 +484,8 @@ footer h1{
    .container{
         display: flex;
         flex-direction: column;
-        padding-top: 15%;
-        height: 80vh;
+        padding-top: 0%;
+        height: 90vh;
     }
 
     body{
@@ -498,19 +498,17 @@ footer h1{
 
     header{
         width: 100%;
-        
         gap: 2%;
         height: 10vh;
         display: flex;
         flex-direction: row;
         justify-content: center;
         align-items: center;
-        position: fixed;
     }
 
     header a{
         width: 20%;
-        font-size: 2.5vw;
+        font-size: 3.5vw;
     }
 
     #link-logo{
@@ -521,7 +519,7 @@ footer h1{
         width: 60%;
         font-size: 5 vw;
         height: 5vh;
-        color: #f0c60a;
+        color: #dab200;
         margin-top: 5%;
         border: 2px dashed #f0c60a;
     }

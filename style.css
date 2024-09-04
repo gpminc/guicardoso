@@ -8,7 +8,7 @@
 @font-face {
     font-family: "Principal";
     src:
-      url("./breul-grotesk-b-light.ttf")
+      url("./Fonte/breul-grotesk-b-light.ttf")
   } 
 
 header{
@@ -509,7 +509,7 @@ footer h1{
 
     header a{
         width: 20%;
-        font-size: 3.5vw;
+        font-size: 3.2vw;
     }
 
     #link-logo{

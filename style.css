@@ -229,14 +229,16 @@ button:hover{
 #bloco{
     width: 100%;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     padding-left: 7%;
     padding-right: 7%;
     box-sizing: border-box;
 }
 
-#bloco-1-proposta{
-    width: 50%;
+.bloco-1-proposta{
+    width: 70%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -244,12 +246,12 @@ button:hover{
     padding-bottom: 5%;
 }
 
-#bloco-1-proposta h1{
-    font-size: 2.5vw;
+.bloco-1-proposta h1{
+    font-size: 2.4vw;
     color: white;
 }
 
-#bloco-1-proposta h2{
+.bloco-1-proposta h2{
     font-size: 1.8vw;
     color: #f0c60a;
     padding-top: 5%;
@@ -277,8 +279,7 @@ button:hover{
 
 #txt-proposta p{
     color: white;
-    font-size: 1.2vw;
-    padding-top: 3%;
+    font-size: 1.8vw;
 }
 
 #txt-proposta li{
@@ -469,12 +470,12 @@ footer h1{
     
 
     .background-slide {
-        position: absolute;
+         
         top: 0;
         left: 0;
         width: 100%;
         height: 100%;
-        background-size:contain;
+        background-size:cover;
         background-repeat: no-repeat;
         z-index: -1;
         transition: transform 1s ease-in-out;
@@ -484,7 +485,8 @@ footer h1{
         display: flex;
         flex-direction: column;
         padding-top: 0%;
-        height: 70vh;
+        padding-bottom: 90%;
+        height: auto;
     }
 
     body{
@@ -583,7 +585,7 @@ footer h1{
         border-radius: 10px;
     }
 
-    #bloco-1-proposta{
+    .bloco-1-proposta{
         width: 100%;
     }
 
@@ -592,12 +594,12 @@ footer h1{
         padding-bottom: 5%;
     }
 
-    #bloco-1-proposta h1{
+    .bloco-1-proposta h1{
         font-size: 3.5vw;
         color: white;
     }
 
-    #bloco-1-proposta h2{
+    .bloco-1-proposta h2{
         font-size: 3vw;
     }
 

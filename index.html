@@ -8,12 +8,14 @@
 </head>
 <body>
     <div id="bcg">
-        <div class="background-slide"></div>
+        <div class="background-slide-container">
+            <img src="./profile_gui.png" alt="Slide Image" class="background-slide">
+        </div>
         <header>
             <a href="" id="link-logo"><img src="./Vereasor-Gui_CArdoso.png" alt="" id="img-logo"></a>
-            <a href="#div-eu"><strong>SOBRE MIM</strong></a>
+            <a href="#bloco-2-proposta"><strong>SOBRE MIM</strong></a>
             <a href="#propostas"><strong>PROJETOS</strong></a>
-            <a href="#div-footer"><strong>INSTAGRAM</strong></a>
+            <a href="#div-eu"><strong>INSTAGRAM</strong></a>
             <a href="https://wa.me/" id="link-btn"><button id="meu-botao">FALE CONOSCO</button></a>
         </header>
         <div class="container">
@@ -73,9 +75,6 @@
                     <p>Ofertaremos cursos pré-vestibulares gratuitos para alunos de baixa renda, proporcionando igualdade de oportunidades no acesso à educação superior.
                     </p>
                 </div>
-            </div>
-            <div id="bloco-2-proposta">
-                <img src="./Imagens/Logo.png" alt="">
             </div>
         </div>
     </div>
@@ -137,57 +136,72 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 });
     
 const desktopImages = [
-    'url(./profile_gui.jpg)',
-    'url(./profile_gui2.jpg)'
+    './profile_gui.png',
+    './profile_gui2.jpg'
 ];
 
 const mobileImages = [
-    'url(./profile_gui_mobile.png)',
-    'url(./profile_gui_mobile_2.png)'
+    './profile_gui_mobile.png',
+    './profile_gui_mobile_2.png'
 ];
 
 let currentIndex = 0;
-let bgContainer = document.querySelector('.background-slide');
+let imgContainer = document.querySelector('.background-slide-container');
+let imgElement = imgContainer.querySelector('.background-slide');
 
 // Função para escolher as imagens de acordo com o tamanho da tela
 function getImages() {
     return window.matchMedia("(max-width: 768px)").matches ? mobileImages : desktopImages;
 }
 
-// Função para definir o background inicial
-function setInitialBackground() {
-    bgContainer.style.backgroundImage = getImages()[currentIndex];
+// Função para definir a imagem inicial
+function setInitialImage() {
+    imgElement.src = getImages()[currentIndex];
+    updateStyles();
 }
 
-function slideBackground(direction) {
+// Função para atualizar o estilo do parágrafo
+function updateStyles() {
+    const bodyClass = document.body.classList;
+    if (getImages()[currentIndex].includes('profile_gui.png')) {
+        bodyClass.add('profile-gui');
+        bodyClass.remove('profile-gui2');
+    } else if (getImages()[currentIndex].includes('profile_gui2.jpg')) {
+        bodyClass.add('profile-gui2');
+        bodyClass.remove('profile-gui');
+    }
+}
+
+function slideImage(direction) {
     const images = getImages(); // Obter as imagens corretas com base no tamanho da tela
     const newIndex = (currentIndex + direction + images.length) % images.length;
     const offset = direction === 1 ? '100%' : '-100%';
 
-    const newBgDiv = document.createElement('div');
-    newBgDiv.className = 'background-slide';
-    newBgDiv.style.backgroundImage = images[newIndex];
-    newBgDiv.style.transform = `translateX(${offset})`;
+    const newImgElement = document.createElement('img');
+    newImgElement.src = images[newIndex];
+    newImgElement.className = 'background-slide';
+    newImgElement.style.transform = `translateX(${offset})`;
 
-    bgContainer.parentElement.appendChild(newBgDiv);
+    imgContainer.appendChild(newImgElement);
 
     requestAnimationFrame(() => {
-        newBgDiv.style.transform = 'translateX(0)';
-        bgContainer.style.transform = `translateX(${-offset})`;
+        newImgElement.style.transform = 'translateX(0)';
+        imgElement.style.transform = `translateX(${-offset})`;
     });
 
-    newBgDiv.addEventListener('transitionend', () => {
-        bgContainer.remove();
-        bgContainer = newBgDiv;
+    newImgElement.addEventListener('transitionend', () => {
+        imgElement.remove();
+        imgElement = newImgElement;
         currentIndex = newIndex; // Atualizar o índice atual
+        updateStyles(); // Atualizar o estilo do parágrafo
     }, { once: true });
 }
 
-document.querySelector('.right-arrow').addEventListener('click', () => slideBackground(1));
-document.querySelector('.left-arrow').addEventListener('click', () => slideBackground(-1));
+document.querySelector('.right-arrow').addEventListener('click', () => slideImage(1));
+document.querySelector('.left-arrow').addEventListener('click', () => slideImage(-1));
 
-// Inicializar com a imagem correta
-setInitialBackground();
+// Inicializar com a imagem correta e aplicar estilo
+setInitialImage();
 
 // Atualizar o índice atual ao redimensionar a janela e ajustar a imagem
 window.addEventListener('resize', () => {

@@ -8,7 +8,7 @@
 @font-face {
     font-family: "Principal";
     src:
-      url("./breul-grotesk-b-light.ttf")
+      url("./Fonte/breul-grotesk-b-light.ttf")
   } 
 
 header{
@@ -25,6 +25,16 @@ header{
     position: relative;
     width: 100%;
     overflow: hidden;
+}
+
+.background-slide-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: -1;
 }
 
 .background-slide {
@@ -101,6 +111,16 @@ h2{
 p{
     font-size: 3.9vw;
     color:#f0c60a;
+    transition: color 0.2s ease;
+}
+
+.profile-gui p {
+    color: white;
+}
+
+/* Estilo específico para profile_gui2.jpg */
+.profile-gui2 p {
+    color: #f0c60a;
 }
 
 a{
@@ -595,7 +615,7 @@ footer h1{
     }
 
     .bloco-1-proposta h1{
-        font-size: 3.4vw;
+        font-size: 3.6vw;
         color: white;
     }
 

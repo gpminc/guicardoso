@@ -333,7 +333,7 @@ button:hover{
   }
 
 #div-eu h1{
-    color: #9C2CD3;
+    color: #f0c60a;
     font-size: 3.5vw;
 }
 
@@ -343,6 +343,12 @@ button:hover{
     padding-top: 3%;
     padding-left: 7%;
     padding-right: 7%;
+    padding-bottom: 3%;
+}
+
+#bloco-1-eu p{
+    color: #9C2CD3;
+    font-size: 3.5vh;
 }
 
 #bloco-2-eu{
@@ -350,14 +356,14 @@ button:hover{
     width: 50%;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items:end;
     padding-top: 3%;
     padding-left: 7%;
     padding-right: 7%;
 }
 
 #bloco-2-eu img{
-    width: 50%;
+    width: 100%;
 }
 
 #bloco-eu{
@@ -703,6 +709,21 @@ footer h1{
         flex-direction: row;
         width: 40%;
         gap: 10px;
+    }
+
+    #bloco-eu{
+        flex-direction: column;
+    }
+
+    #bloco-1-eu{
+        width: 100%;
+    }
+    #bloco-1-eu p{
+        font-size: 2.3vh;
+    }
+
+    #bloco-2-eu{
+        width: 100%;
     }
      /* 
     #bloco-2 img{
